@@ -6,12 +6,16 @@ import bird from './assets/bird-image.webp'
 import dog from './assets/dog-image.webp'
 import dogHorizontal from './assets/dog-image-horizontal.webp'
 import 'swiper/swiper.min.css'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// Jest bug z swiperem dlatego uzywam tu ts-ignore
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import {Swiper, SwiperSlide} from "swiper/react";
 import 'swiper/css/bundle'
 export function App() {
 
-  return (
+  // @ts-ignore
+    return (
     <>
         <nav className='flex items-center h-24 px-6 justify-between shadow translate-y-2 shadow-md shadow-opacity-20 '>
             <div className='w-[88%] mx-auto flex items-center justify-between'>
@@ -137,6 +141,8 @@ export function App() {
                     modules={[Navigation, Pagination, Scrollbar, A11y]}
                     navigation
                     pagination={{ clickable: true }}
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
                     style={{"--swiper-pagination-bullet-size": "10px","--swiper-pagination-color":"#204497", "--swiper-navigation-color":"#204497", }}
                 >
                     <SwiperSlide>
