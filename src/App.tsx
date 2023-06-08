@@ -9,12 +9,29 @@ import 'swiper/swiper.min.css'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // Jest bug z swiperem dlatego uzywam tu ts-ignore
+
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import {Swiper, SwiperSlide} from "swiper/react";
 import 'swiper/css/bundle'
+import {useState} from "react";
 export function App() {
-
-  // @ts-ignore
+    const [imageModalSrc, setImageModalSrc] = useState<string>('');
+    const handleImageClick = (src:string) => {
+        setImageModalSrc(src);
+        setIsModalOpen(true);
+    };
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    if(isModalOpen){
+        document.body.style.overflow = 'hidden'
+        document.body.style.paddingRight = '15px'
+    }else{
+        document.body.style.overflow = 'auto'
+        document.body.style.paddingRight = '0px'
+    }
+    const closeModal = () => {
+        setImageModalSrc('');
+        setIsModalOpen(false);
+    };
     return (
     <>
         <nav className='flex items-center h-24 px-6 justify-between shadow translate-y-2 shadow-md shadow-opacity-20 '>
@@ -148,29 +165,29 @@ export function App() {
                     <SwiperSlide>
                         <div className='w-[77%] lg:w-[88%] mx-auto mb-16'>
                             <div className='flex flex-col gap-3 lg:hidden'>
-                                <img loading="lazy"className='w-full rounded-lg aspect-[308/171]'  src={bird} alt="bird"/>
+                                <img loading="lazy"className='w-full rounded-lg aspect-[308/171]'  src={bird} alt="bird" onClick={() => handleImageClick(bird)}/>
                                 <div className='flex  justify-between'>
-                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={cat} alt="cat"/>
-                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={cat} alt="cat"/>
+                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={cat} alt="cat" onClick={() => handleImageClick(cat)} />
+                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={cat} alt="cat" onClick={() => handleImageClick(cat)} />
                                 </div>
-                                <img loading="lazy"className='w-full rounded-lg aspect-[308/171]'  src={bird} alt="bird"/>
+                                <img loading="lazy"className='w-full rounded-lg aspect-[308/171]'  src={bird} alt="bird" onClick={() => handleImageClick(bird)} />
                                 <div className='flex gap-2 justify-between mb-6'>
-                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={cat} alt="cat"/>
-                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={cat} alt="cat"/>
+                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={cat} alt="cat" onClick={() => handleImageClick(cat)} />
+                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={cat} alt="cat" onClick={() => handleImageClick(cat)} />
                                 </div>
                             </div>
                             <div className='hidden lg:flex flex-col gap-6 w-full'>
                                 <div className='flex gap-6 h-80 w-full justify-around'>
-                                    <img loading="lazy"className='w-1/4 rounded-lg aspect-[280/326]'  src={cat} alt="cat"/>
+                                    <img loading="lazy"className='w-1/4 rounded-lg aspect-[280/326]'  src={cat} alt="cat" onClick={() => handleImageClick(cat)} />
 
-                                    <img loading="lazy"className='rounded-lg w-1/2  aspect-[560/326]'  src={bird} alt="bird"/>
-                                    <img loading="lazy"className='rounded-lg w-1/4  aspect-[280/326]'  src={cat} alt="cat"/>
+                                    <img loading="lazy"className='rounded-lg w-1/2  aspect-[560/326]'  src={bird} alt="bird" onClick={() => handleImageClick(bird)} />
+                                    <img loading="lazy"className='rounded-lg w-1/4  aspect-[280/326]'  src={cat} alt="cat" onClick={() => handleImageClick(cat)} />
                                 </div>
                                 <div className='flex gap-6 h-80 w-full justify-around'>
-                                    <img loading="lazy"className='w-1/4 rounded-lg aspect-[280/326]'  src={cat} alt="cat"/>
+                                    <img loading="lazy"className='w-1/4 rounded-lg aspect-[280/326]'  src={cat} alt="cat" onClick={() => handleImageClick(cat)} />
 
-                                    <img loading="lazy"className='rounded-lg w-1/4  aspect-[280/326]'  src={cat} alt="cat"/>
-                                    <img loading="lazy"className='rounded-lg w-1/2  aspect-[560/326]'  src={bird} alt="bird"/>
+                                    <img loading="lazy"className='rounded-lg w-1/4  aspect-[280/326]'  src={cat} alt="cat" onClick={() => handleImageClick(cat)} />
+                                    <img loading="lazy"className='rounded-lg w-1/2  aspect-[560/326]'  src={bird} alt="bird" onClick={() => handleImageClick(bird)}/>
                                 </div>
                             </div>
                         </div>
@@ -180,29 +197,29 @@ export function App() {
                     <SwiperSlide>
                         <div className='w-[77%] lg:w-[88%] mx-auto mb-16'>
                             <div className='flex flex-col gap-3 lg:hidden'>
-                                <img loading="lazy"className='w-full rounded-lg aspect-[308/171]'  src={dogHorizontal} alt="dog"/>
+                                <img loading="lazy"className='w-full rounded-lg aspect-[308/171]'  src={dogHorizontal} alt="dog" onClick={() => handleImageClick(dogHorizontal)}/>
                                 <div className='flex  justify-between'>
-                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={dog} alt="dog"/>
-                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={dog} alt="dog"/>
+                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={dog} alt="dog" onClick={() => handleImageClick(dog)}/>
+                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={dog} alt="dog" onClick={() => handleImageClick(dog)}/>
                                 </div>
-                                <img loading="lazy"className='w-full rounded-lg aspect-[308/171]'  src={dogHorizontal} alt="dog"/>
+                                <img loading="lazy"className='w-full rounded-lg aspect-[308/171]'  src={dogHorizontal} alt="dog" onClick={() => handleImageClick(dogHorizontal)}/>
                                 <div className='flex gap-2 justify-between mb-6'>
-                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={dog} alt="dog"/>
-                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={dog} alt="dog"/>
+                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={dog} alt="dog" onClick={() => handleImageClick(dog)}/>
+                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={dog} alt="dog" onClick={() => handleImageClick(dog)}/>
                                 </div>
                             </div>
                             <div className='hidden lg:flex flex-col gap-6 w-full'>
                                 <div className='flex gap-6 h-80 w-full justify-around'>
-                                    <img loading="lazy"className='w-1/4 rounded-lg aspect-[280/326]'  src={dog} alt="dog"/>
+                                    <img loading="lazy"className='w-1/4 rounded-lg aspect-[280/326]'  src={dog} alt="dog" onClick={() => handleImageClick(dog)}/>
 
-                                    <img loading="lazy"className='rounded-lg w-1/2  aspect-[560/326]'  src={dogHorizontal} alt="dog"/>
-                                    <img loading="lazy"className='rounded-lg w-1/4  aspect-[280/326]'  src={dog} alt="dog"/>
+                                    <img loading="lazy"className='rounded-lg w-1/2  aspect-[560/326]'  src={dogHorizontal} alt="dog" onClick={() => handleImageClick(dogHorizontal)}/>
+                                    <img loading="lazy"className='rounded-lg w-1/4  aspect-[280/326]'  src={dog} alt="dog" onClick={() => handleImageClick(dog)}/>
                                 </div>
                                 <div className='flex gap-6 h-80 w-full justify-around'>
-                                    <img loading="lazy"className='w-1/4 rounded-lg aspect-[280/326]'  src={dog} alt="dog"/>
+                                    <img loading="lazy"className='w-1/4 rounded-lg aspect-[280/326]'  src={dog} alt="dog" onClick={() => handleImageClick(dog)}/>
 
-                                    <img loading="lazy"className='rounded-lg w-1/4  aspect-[280/326]'  src={dog} alt="dog"/>
-                                    <img loading="lazy"className='rounded-lg w-1/2  aspect-[560/326]'  src={bird} alt="bird"/>
+                                    <img loading="lazy"className='rounded-lg w-1/4  aspect-[280/326]'  src={dog} alt="dog" onClick={() => handleImageClick(dog)}/>
+                                    <img loading="lazy"className='rounded-lg w-1/2  aspect-[560/326]'  src={bird} alt="bird" onClick={() => handleImageClick(bird)}/>
                                 </div>
                             </div>
                         </div>
@@ -211,29 +228,29 @@ export function App() {
                     <SwiperSlide>
                         <div className='w-[77%] lg:w-[88%] mx-auto mb-16'>
                             <div className='flex flex-col gap-3 lg:hidden'>
-                                <img loading="lazy"className='w-full rounded-lg aspect-[308/171]'  src={bird} alt="bird"/>
+                                <img loading="lazy"className='w-full rounded-lg aspect-[308/171]'  src={bird} alt="bird" onClick={() => handleImageClick(bird)}/>
                                 <div className='flex  justify-between'>
-                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={cat} alt="cat"/>
-                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={dog} alt="dog"/>
+                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={cat} alt="cat" onClick={() => handleImageClick(cat)} />
+                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={dog} alt="dog" onClick={() => handleImageClick(dog)}/>
                                 </div>
-                                <img loading="lazy"className='w-full rounded-lg aspect-[308/171]'  src={dogHorizontal} alt="dog"/>
+                                <img loading="lazy"className='w-full rounded-lg aspect-[308/171]'  src={dogHorizontal} alt="dog" onClick={() => handleImageClick(dogHorizontal)}/>
                                 <div className='flex gap-2 justify-between mb-6'>
-                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={cat} alt="cat"/>
-                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={cat} alt="cat"/>
+                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={cat} alt="cat" onClick={() => handleImageClick(cat)} />
+                                    <img loading="lazy"className='rounded-lg w-[48%] aspect-[146/170]'  src={cat} alt="cat" onClick={() => handleImageClick(cat)} />
                                 </div>
                             </div>
                             <div className='hidden lg:flex flex-col gap-6 w-full'>
                                 <div className='flex gap-6 h-80 w-full justify-around'>
-                                    <img loading="lazy"className='w-1/4 rounded-lg aspect-[280/326]'  src={cat} alt="cat"/>
+                                    <img loading="lazy"className='w-1/4 rounded-lg aspect-[280/326]'  src={cat} alt="cat" onClick={() => handleImageClick(cat)} />
 
-                                    <img loading="lazy"className='rounded-lg w-1/2  aspect-[560/326]'  src={bird} alt="bird"/>
-                                    <img loading="lazy"className='rounded-lg w-1/4  aspect-[280/326]'  src={dog} alt="dog"/>
+                                    <img loading="lazy"className='rounded-lg w-1/2  aspect-[560/326]'  src={bird} alt="bird"  onClick={() => handleImageClick(bird)}/>
+                                    <img loading="lazy"className='rounded-lg w-1/4  aspect-[280/326]'  src={dog} alt="dog" onClick={() => handleImageClick(dog)}/>
                                 </div>
                                 <div className='flex gap-6 h-80 w-full justify-around'>
-                                    <img loading="lazy"className='w-1/4 rounded-lg aspect-[280/326]'  src={dog} alt="dog"/>
+                                    <img loading="lazy"className='w-1/4 rounded-lg aspect-[280/326]'  src={dog} alt="dog" onClick={() => handleImageClick(dog)}/>
 
-                                    <img loading="lazy"className='rounded-lg w-1/4  aspect-[280/326]'  src={cat} alt="cat"/>
-                                    <img loading="lazy"className='rounded-lg w-1/2  aspect-[560/326]'  src={dogHorizontal} alt="dog"/>
+                                    <img loading="lazy"className='rounded-lg w-1/4  aspect-[280/326]'  src={cat} alt="cat" onClick={() => handleImageClick(cat)} />
+                                    <img loading="lazy"className='rounded-lg w-1/2  aspect-[560/326]'  src={dogHorizontal} alt="dog" onClick={() => handleImageClick(dogHorizontal)}/>
                                 </div>
                             </div>
                         </div>
@@ -241,6 +258,24 @@ export function App() {
                     </SwiperSlide>
                 </Swiper>
             </div>
+
+            {isModalOpen && (
+                <>
+                    <div className='fixed inset-0 bg-["rgba(0, 0, 0, .7)"] z-50' onClick={closeModal} style={{backgroundColor: "rgba(0, 0, 0, 0.8)"}}>
+                        <span className="text-white absolute top-4 right-8 text-2xl font-bold cursor-pointer" onClick={closeModal}>&times;</span>
+                    </div>
+                    <div
+                        className="fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]  bg-white z-50 overflow-auto"
+
+                    >
+
+                        <div className="flex justify-center items-center mx-auto w-full h-full max-w-[800px]">
+                            <img src={imageModalSrc} alt="Modal Image" />
+                        </div>
+                    </div>
+                </>
+            )}
+
         </main>
     </>
   )
